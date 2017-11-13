@@ -18,4 +18,5 @@ As you start learning these datastructures/Algorithm/problem solving techniques,
 - [x] [Hacker Earth](https://www.hackerearth.com/challenges/)
 - [x] [Geeks for geeks](http://www.geeksforgeeks.org/)
 
-## It is only matter of time and practice which will make you much better programmer than you are today!
+> I hope you get your hands dirty and start learning, `Happy Learning`
+## Learning core programming is key to success, It is only matter of time and practice which will make you much better programmer than you are today!
