@@ -3,7 +3,7 @@ package com.engineeralgorithmanddrdatastructure.possibility;
 /**
  * You are given an integer tower[], for each element in tower represents max hops from current position to positive side.
  * You are at 0th position and you need to move out of towers.
- * Find out whether it is possible or not using given array.
+ * Find out whether it is possible or not using given towers.
  * example
  *  -
  *  -
