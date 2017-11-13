@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.coreproblemsolving;
+package com.engineeralgorithmanddrdatastructure.combinactory;
 
 import java.util.ArrayList;
 import java.util.List;

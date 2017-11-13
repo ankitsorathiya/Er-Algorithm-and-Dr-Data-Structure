@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.coreproblemsolving;
+package com.engineeralgorithmanddrdatastructure.combinactory;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,6 +6,8 @@ import static org.junit.Assert.fail;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.engineeralgorithmanddrdatastructure.possibility.Hopable;
 
 public class HopingTest {
 	private Hopable hopable;
