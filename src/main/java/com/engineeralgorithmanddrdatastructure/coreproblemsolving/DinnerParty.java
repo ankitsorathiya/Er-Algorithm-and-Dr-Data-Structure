@@ -11,6 +11,9 @@ import java.util.List;
  *  Friends => [1,2,3,4,5]  and Table size=> 5
  *  output=>[[1,2,3,4,5]] 
  *  example 2.
+ *  Friends => [1,2] and Table size=> 1
+ *  output=> [[1],[2]]
+ *  example 3.
  *  Friends => [1,2,3,4] and Table size=> 3
  *  output =>[[1,2,3],[1,2,4],[1,3,4],[2,3,4]]
  */
