@@ -20,3 +20,10 @@ As you start learning these datastructures/Algorithm/problem solving techniques,
 
 > I hope you get your hands dirty and start learning, `Happy Learning`
 ## Learning core programming is key to success, It is only matter of time and practice which will make you much better programmer than you are today!
+
+```
+$git is learning programming any good?
+  ___ .__.  .   . ....
+   |  |__|  |   | |...
+   |  |  \  |___| |...
+```
