@@ -1,11 +1,5 @@
 # Er-Algorithm-and-Dr-Data-Structure
-I would like to introduce you to two of my friends
-- Engineer **Algorithm**
-- Doctor **Data structure**
-
 While I was applying for software engineering role, most of the organization asked to solve core coding problems and I was able to solve them because of these two kind beings.
-
-> To succeed in the coding rounds you must make these two as your friends!
 - [x] Engineer Algorithm
 - [x] Doctor Data structure
 
