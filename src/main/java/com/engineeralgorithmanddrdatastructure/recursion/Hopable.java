@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.possibility;
+package com.engineeralgorithmanddrdatastructure.recursion;
 
 /**
  * You are given an integer tower[], for each element in tower represents max hops from current position to positive side.

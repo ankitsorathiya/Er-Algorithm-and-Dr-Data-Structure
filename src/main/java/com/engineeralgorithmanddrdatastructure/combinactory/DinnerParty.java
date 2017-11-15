@@ -59,6 +59,10 @@ class Table implements Cloneable {
 		return friends.size();
 	}
 
+	public void addFriends(List<Integer> friends) {
+		this.friends.addAll(friends);
+	}
+
 	@Override
 	protected Table clone() {
 		Table clonedTable = new Table();
@@ -67,9 +71,34 @@ class Table implements Cloneable {
 		clonedTable.friends = clonedFriends;
 		return clonedTable;
 	}
-
 	@Override
 	public String toString() {
-		return this.friends.toString();
+		return friends.toString();
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Table other = (Table) obj;
+		if (friends == null) {
+			if (other.friends != null)
+				return false;
+		} else if (!friends.equals(other.friends))
+			return false;
+		return true;
+	}
+
 }
