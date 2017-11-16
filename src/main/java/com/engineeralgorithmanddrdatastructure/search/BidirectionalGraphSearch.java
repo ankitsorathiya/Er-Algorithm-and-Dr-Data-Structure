@@ -8,6 +8,13 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+/**
+ * You can find problem definition on
+ * {@link} http://www.geeksforgeeks.org/bidirectional-search/
+ * 
+ * @author ankit.sorathiya
+ *
+ */
 public class BidirectionalGraphSearch {
 
 	public Path bidirectionalSearch(String source, String destination, Map<String, List<String>> graphConnectivity) {
