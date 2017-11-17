@@ -21,4 +21,4 @@ As you start learning these datastructures/Algorithm/problem solving techniques,
 - Find [Build Status](https://travis-ci.org/ankitsorathiya/Er-Algorithm-and-Dr-Data-Structure)
 - Find [Code coverage](https://codecov.io/gh/ankitsorathiya/Er-Algorithm-and-Dr-Data-Structure)
 
-##### We have integrated travis-ci and codecov for continuous integration and code coverage respectively.
+> We have integrated travis-ci and codecov for continuous integration and code coverage respectively.
