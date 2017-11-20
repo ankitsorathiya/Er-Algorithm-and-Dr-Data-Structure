@@ -15,9 +15,10 @@ As you start learning these datastructures/Algorithm/problem solving techniques,
 > I hope you get your hands dirty and start learning, `Happy Learning`
 ## Learning core programming is key to success, It is only matter of time and practice which will make you much better programmer than you are today!
 
-```
-$git Learning problem solving is key to success.
-  ___ .__.  .   . ....
-   |  |__|  |   | |...
-   |  |  \  |___| |...
-```
+
+## Build related notes
+
+- Find [Build Status](https://travis-ci.org/ankitsorathiya/Er-Algorithm-and-Dr-Data-Structure)
+- Find [Code coverage](https://codecov.io/gh/ankitsorathiya/Er-Algorithm-and-Dr-Data-Structure)
+
+> We have integrated travis-ci and codecov for continuous integration and code coverage respectively.
