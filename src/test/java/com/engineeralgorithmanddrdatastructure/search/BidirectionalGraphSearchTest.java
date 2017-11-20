@@ -12,11 +12,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BidirectionalGraphSearchTest {
-	private Graph graph;
+	Map<String, List<String>> connectivity;
+	BidirectionalGraphSearch graphSearch;
 
 	@Before
 	public void initialize() throws Exception {
-		Map<String, List<String>> connectivity = new HashMap<>();
+		graphSearch = new BidirectionalGraphSearch();
+		connectivity = new HashMap<>();
 		connectivity.put("0", new ArrayList<>(Arrays.asList("4")));
 		connectivity.put("1", new ArrayList<>(Arrays.asList("4")));
 		connectivity.put("2", new ArrayList<>(Arrays.asList("5")));
@@ -33,12 +35,11 @@ public class BidirectionalGraphSearchTest {
 		connectivity.put("13", new ArrayList<>(Arrays.asList("10")));
 		connectivity.put("14", new ArrayList<>(Arrays.asList("10")));
 		connectivity.put("15", new ArrayList<>(Arrays.asList()));
-		this.graph = GraphFactory.buildGraph(connectivity);
 	}
 
 	@Test
 	public void testValidPath() {
-		BidirectionalGraphSearch graphSearch = new BidirectionalGraphSearch();
+		Graph graph = GraphFactory.buildGraph(connectivity);
 		Node source = graph.getNode("0");
 		Node destination = graph.getNode("14");
 		Path path = graphSearch.bidirectionalSearch(source, destination, graph);
@@ -46,8 +47,14 @@ public class BidirectionalGraphSearchTest {
 	}
 
 	@Test
+	public void testValidPathWithOverloadedMethod() {
+		Path path = graphSearch.bidirectionalSearch("0", "14", connectivity);
+		assertEquals("0=>4=>6=>7=>8=>10=>14", path.toString());
+	}
+
+	@Test
 	public void testNotFoundPath() {
-		BidirectionalGraphSearch graphSearch = new BidirectionalGraphSearch();
+		Graph graph = GraphFactory.buildGraph(connectivity);
 		Node source = graph.getNode("0");
 		Node destination = graph.getNode("15");
 		Path path = graphSearch.bidirectionalSearch(source, destination, graph);
