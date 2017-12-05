@@ -1,29 +1,28 @@
 package com.engineeralgorithmanddrdatastructure.search;
-import java.util.Scanner;
 
-public class Max1sString {
-	public static void main(String args[]) throws Exception {
-		Scanner scanner = new Scanner(System.in);
-		int n = scanner.nextInt();
-		int k = scanner.nextInt();
-		String input = scanner.next();
+import java.util.ArrayList;
+import java.util.List;
 
-		char[] onesAndZeros = input.toCharArray();
-		int[] memo = new int[n];
+public class Max1ConnectedString {
+	public static List<Integer> executeFindMaxQueries(char[] onesAndZeros, String[] queries) {
+		int[] memo = new int[onesAndZeros.length];
 		int max = initializeSubArraysAndMax(onesAndZeros, memo);
-		for (int q = 0; q < k; q++) {
-			int queryType = scanner.nextInt();
+		List<Integer> result = new ArrayList<>();
+		for (int q = 0; q < queries.length; q++) {
+			String[] chunks = queries[q].split(" ");
+			int queryType = Integer.parseInt(chunks[0]);
 			switch (queryType) {
 			case 1:
-				System.out.println(max);
+				result.add(max);
 				break;
 			case 2:
-				int changeIndex = scanner.nextInt();
+				int changeIndex = Integer.parseInt(chunks[1]);
 				max = updateMemo(max, onesAndZeros, memo, changeIndex - 1);
 				break;
 			}
 
 		}
+		return result;
 	}
 
 	private static int updateMemo(int currentMax, char[] onesAndZeros, int[] memo, int changeIndex) {
