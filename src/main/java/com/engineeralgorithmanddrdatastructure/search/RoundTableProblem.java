@@ -5,33 +5,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
-class RoundTableProblem {
-	public static void main(String args[]) throws Exception {
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		int N = scanner.nextInt();
-		int Q = scanner.nextInt();
-		int[] universities = new int[N];
-		for (int index = 0; index < N; index++) {
-			universities[index] = scanner.nextInt();
-		}
+public class RoundTableProblem {
+	public static List<Integer> findMeetingPointForTwoUniversities(int[] students, int[][] queries) {
 		Map<String, Integer> memo = new HashMap<>();
+		List<Integer> result = new ArrayList<>();
 		Map<Integer, List<Integer>> universityPositions = new HashMap<>();
-		for (int q = 0; q < Q; q++) {
-			int xUniversity = scanner.nextInt();
-			int yUniversity = scanner.nextInt();
-			System.out.println(
-					RoundTable.findSolution(universities, memo, universityPositions, xUniversity, yUniversity));
+		for (int q = 0; q < queries.length; q++) {
+			int xUniversity = queries[q][0];
+			int yUniversity = queries[q][1];
+			int minSteps = findMinStepsToMeetForTwoUniversityStudents(students, memo, universityPositions, xUniversity,
+					yUniversity);
+			result.add(minSteps);
 		}
-
+		return result;
 	}
-}
 
-class RoundTable {
-
-	public static int findSolution(int[] universities, Map<String, Integer> memo,
+	private static int findMinStepsToMeetForTwoUniversityStudents(int[] universities, Map<String, Integer> memo,
 			Map<Integer, List<Integer>> universityPositions, int xUniversity, int yUniversity) {
 		// store in ascending orders
 		String memoKey = xUniversity < yUniversity ? xUniversity + " " + yUniversity : yUniversity + " " + xUniversity;
