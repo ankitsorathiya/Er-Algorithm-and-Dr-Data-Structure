@@ -10,6 +10,13 @@ import java.util.Set;
  * 1. substring should have equal numbers of 0's and 1's and that too be
  * consecutive. 10,01,0011,0101,1100,1010,0101,00110011 are valid substrings
  * 
+ * 2. It must have equal numbers of consecutive 0's and 1's
+ * 
+ * 
+ * Valid substrings = > 0011,0101
+ * 
+ * Invalid substrings= > 110011, 101001, although they are having equal numbers
+ * of zeros and ones but doesn't follow the same pattern like above.
  * 
  * 
  * 
