@@ -18,17 +18,17 @@ public class RiskReductionPortfolio {
 		return Math.max(folioSum.getSumFromParent(), folioSum.getSumFromFirstChild());
 	}
 
-	private static void findMaximizedInvestment(FolioNode rootFolio, FolioSum folioSum, boolean shouldAddValue) {
+	private static void findMaximizedInvestment(FolioNode rootFolio, FolioSum folioSum, boolean shouldAddToParent) {
 		if (rootFolio == null) {
 			return;
 		}
-		if (shouldAddValue) {
+		if (shouldAddToParent) {
 			folioSum.addSumFromParent(rootFolio.getValue());
 		} else {
 			folioSum.addSumFromFirstChild(rootFolio.getValue());
 		}
-		findMaximizedInvestment(rootFolio.getLeft(), folioSum, !shouldAddValue);
-		findMaximizedInvestment(rootFolio.getRight(), folioSum, !shouldAddValue);
+		findMaximizedInvestment(rootFolio.getLeft(), folioSum, !shouldAddToParent);
+		findMaximizedInvestment(rootFolio.getRight(), folioSum, !shouldAddToParent);
 	}
 
 	private static FolioNode buildTree(String serializedBinaryTree) {
@@ -40,9 +40,9 @@ public class RiskReductionPortfolio {
 		FolioNode root = new FolioNode(binaryTree[0]);
 		parents.add(root);
 		int startIndex = 1;
-		while (startIndex < binaryTree.length - 1) {
+		while (!parents.isEmpty()) {
 			Queue<FolioNode> goingToBeParents = new LinkedList<>();
-			while (!parents.isEmpty()) {
+			while (!parents.isEmpty() && startIndex < binaryTree.length - 1) {
 				FolioNode currentRoot = parents.poll();
 				if (!binaryTree[startIndex].equals("#")) {
 					FolioNode leftFolio = new FolioNode(binaryTree[startIndex]);
