@@ -1,21 +1,17 @@
 package com.engineeralgorithmanddrdatastructure.npproblems.riskreductioninvestment;
 
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
 
 public class RiskReductionInvestment {
 	private static void invertGraph(CompaniesGraph companiesGraph) {
-		Map<String, InvestmentCompany> companies = companiesGraph.getCompanies();
-		for (String companyName : companies.keySet()) {
-			InvestmentCompany firstCompany = companies.get(companyName);
-			for (String otherCompanyName : companies.keySet()) {
-				if (companyName.equals(otherCompanyName)) {
+		Collection<InvestmentCompany> companies = companiesGraph.getCompanies();
+		for (InvestmentCompany firstCompany : companies) {
+			for (InvestmentCompany secondCompany : companies) {
+				if (firstCompany.equals(secondCompany)) {
 					continue;
 				}
-				InvestmentCompany secondCompany = companies.get(otherCompanyName);
 				if (companiesGraph.areTheseCompanyConnected(firstCompany, secondCompany)) {
 					companiesGraph.unlinkSecondCompanyFromFirst(firstCompany, secondCompany);
 				} else {
@@ -27,40 +23,26 @@ public class RiskReductionInvestment {
 
 	private static int findMaximumInvestment(CompaniesGraph companiesGraph) {
 		int maxInvestment = 0;
-		Set<InvestmentCompany> seen = new HashSet<>();
-		Map<String, InvestmentCompany> companies = companiesGraph.getCompanies();
-		for (String comapanyName : companies.keySet()) {
-			InvestmentCompany currentCompany = companies.get(comapanyName);
-			if (seen.contains(currentCompany)) {
-				continue;
+		Collection<InvestmentCompany> companies = companiesGraph.getCompanies();
+		for (InvestmentCompany currentCompany : companies) {
+			Set<Set<InvestmentCompany>> possibleClique = new HashSet<>();
+			for (InvestmentCompany connectedCompany : currentCompany.getConnectedCompanies()) {
+				Set<InvestmentCompany> currentClique = new HashSet<>();
+				currentClique.add(currentCompany);
+				currentClique.add(connectedCompany);
+				possibleClique.add(currentClique);
 			}
-			Queue<InvestmentCompany> queue = new LinkedList<>();
-			Set<InvestmentCompany> possibleClique = new HashSet<>();
-			queue.add(currentCompany);
-			possibleClique.add(currentCompany);
-			while (!queue.isEmpty()) {
-				InvestmentCompany currentlySeen = queue.poll();
-				if (seen.contains(currentlySeen)) {
-					continue;
-				}
-				Set<InvestmentCompany> companiesToRemove = new HashSet<>();
-				for (InvestmentCompany otherCompany : possibleClique) {
-					if (!currentlySeen.equals(otherCompany)) {
-						if (!companiesGraph.areTheseCompanyConnected(currentCompany, otherCompany)) {
-							companiesToRemove.add(otherCompany);
+			for (InvestmentCompany connectedCompany : currentCompany.getConnectedCompanies()) {
+				for (Set<InvestmentCompany> clique : possibleClique) {
+					if (companiesGraph.isConnectedWithAll(connectedCompany, clique)) {
+						clique.add(connectedCompany);
+						int currentInvestment = calcualteCurrentInvestment(clique);
+						if (currentInvestment > maxInvestment) {
+							maxInvestment = currentInvestment;
 						}
 					}
 				}
-				queue.addAll(currentlySeen.getConnectedCompanies());
-				possibleClique.removeAll(companiesToRemove);
-				possibleClique.add(currentlySeen);
-				seen.add(currentlySeen);
-				int currentInvestment = calcualteCurrentInvestment(possibleClique);
-				if (currentInvestment > maxInvestment) {
-					maxInvestment = currentInvestment;
-				}
 			}
-			seen.add(currentCompany);
 		}
 		return maxInvestment;
 	}

@@ -33,14 +33,14 @@ public class InvestmentGraphFactory {
 					graph.addCompany(leftComapny);
 					goingToBeParents.add(leftComapny);
 					goingToBeParentsIndices.add(leftIndex);
-					parent.linkCompany(leftComapny);
+					graph.link(parent, leftComapny);
 				}
 				if (!nodes[rightIndex].equals("#")) {
 					InvestmentCompany rightCompany = new InvestmentCompany(Integer.parseInt(nodes[rightIndex]),
 							String.valueOf(rightIndex));
 					graph.addCompany(rightCompany);
+					graph.link(parent, rightCompany);
 					goingToBeParents.add(rightCompany);
-					parent.linkCompany(rightCompany);
 					goingToBeParentsIndices.add(rightIndex);
 				}
 
