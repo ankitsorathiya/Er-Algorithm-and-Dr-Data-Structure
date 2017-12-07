@@ -4,7 +4,9 @@ While I was applying for software engineering role, most of the organization ask
 - [x] Doctor Data structure
 
 > You can get familiar to these two over the internet. Followings are my recommendation to start with
-- [MIT Data structures and Algorithms] (https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
+- [MIT Data structures and Algorithms](https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
+- [Udacity- Theoritical computer science](https://classroom.udacity.com/courses/cs313)
+- [Udacit - Intro to computer science](https://classroom.udacity.com/courses/cs215)
 
 As you start learning these datastructures/Algorithm/problem solving techniques, You must require to practice them and My recommendation goes to 
 
