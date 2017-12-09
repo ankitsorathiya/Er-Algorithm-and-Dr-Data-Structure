@@ -7,6 +7,7 @@ While I was applying for software engineering role, most of the organization ask
 - [MIT Data structures and Algorithms](https://www.youtube.com/playlist?list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)
 - [Udacity- Theoritical computer science](https://classroom.udacity.com/courses/cs313)
 - [Udacity - Intro to computer science](https://classroom.udacity.com/courses/cs215)
+- [Cracking the coding interview](https://g.co/kgs/YKM5pV)
 
 As you start learning these datastructures/Algorithm/problem solving techniques, You must require to practice them and My recommendation goes to 
 
