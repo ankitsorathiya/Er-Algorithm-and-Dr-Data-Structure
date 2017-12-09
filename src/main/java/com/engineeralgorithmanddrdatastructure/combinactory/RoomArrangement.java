@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.recursion;
+package com.engineeralgorithmanddrdatastructure.combinactory;
 
 /**
  * 
@@ -47,9 +47,6 @@ public class RoomArrangement {
 	}
 
 	private static void findOutPossibleArrangement(int[] floors, int index, int people, long[] result) {
-		if (index < 0) {
-			return;
-		}
 		for (int currentPeople = floors[index]; currentPeople <= people; currentPeople = currentPeople
 				+ floors[index]) {
 			int remainingPeople = people - currentPeople;

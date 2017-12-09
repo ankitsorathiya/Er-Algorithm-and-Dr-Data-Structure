@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.engineeralgorithmanddrdatastructure.recursion.RoomArrangement;
-
 public class RoomArrangementTest {
 	@Test
 	public void testRoomArrangement() {
