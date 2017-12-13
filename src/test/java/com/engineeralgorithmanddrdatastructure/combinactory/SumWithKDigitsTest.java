@@ -3,7 +3,6 @@ package com.engineeralgorithmanddrdatastructure.combinactory;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -30,18 +29,27 @@ public class SumWithKDigitsTest {
 	public static Collection<Object[]> getData() {
 		Collection<Object[]> input = new ArrayList<>();
 		List<ArrayList<Integer>> result = new ArrayList<>();
-		result.add((ArrayList<Integer>) Arrays.asList(1, 3, 6, 9));
-		result.add((ArrayList<Integer>) Arrays.asList(1, 3, 7, 8));
-		result.add((ArrayList<Integer>) Arrays.asList(1, 4, 5, 9));
-		result.add((ArrayList<Integer>) Arrays.asList(1, 4, 6, 8));
-		result.add((ArrayList<Integer>) Arrays.asList(1, 5, 6, 7));
-		result.add((ArrayList<Integer>) Arrays.asList(2, 3, 5, 9));
-		result.add((ArrayList<Integer>) Arrays.asList(2, 3, 6, 8));
-		result.add((ArrayList<Integer>) Arrays.asList(2, 4, 5, 8));
-		result.add((ArrayList<Integer>) Arrays.asList(2, 4, 6, 7));
-		result.add((ArrayList<Integer>) Arrays.asList(3, 4, 5, 7));
+		result.add(getList(new int[] { 1, 2, 7, 9 }));
+		result.add(getList(new int[] { 1, 3, 6, 9 }));
+		result.add(getList(new int[] { 1, 3, 7, 8 }));
+		result.add(getList(new int[] { 1, 4, 5, 9 }));
+		result.add(getList(new int[] { 1, 4, 6, 8 }));
+		result.add(getList(new int[] { 1, 5, 6, 7 }));
+		result.add(getList(new int[] { 2, 3, 5, 9 }));
+		result.add(getList(new int[] { 2, 3, 6, 8 }));
+		result.add(getList(new int[] { 2, 4, 5, 8 }));
+		result.add(getList(new int[] { 2, 4, 6, 7 }));
+		result.add(getList(new int[] { 3, 4, 5, 7 }));
 		input.add(new Object[] { result, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 4, 19 });
 		return input;
+	}
+
+	private static ArrayList<Integer> getList(int[] input) {
+		ArrayList<Integer> list = new ArrayList<>(input.length);
+		for (int number : input) {
+			list.add(number);
+		}
+		return list;
 	}
 
 	@Test

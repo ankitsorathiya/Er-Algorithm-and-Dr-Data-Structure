@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SumWithKDigits {
-	public static void main(String[] args) {
-		List<List<Integer>> result = findKDigitsWhoSum(new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 4, 19);
-		System.out.println(result);
-	}
-
 	public static List<List<Integer>> findKDigitsWhoSum(int[] input, int k, int sum) {
 		List<List<Integer>> result = new ArrayList<>();
 		if (k <= 0) {
