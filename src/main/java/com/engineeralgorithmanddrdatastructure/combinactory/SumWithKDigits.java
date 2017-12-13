@@ -13,13 +13,13 @@ public class SumWithKDigits {
 			if (input[index] < sum) {
 				ArrayList<Integer> currentSolution = new ArrayList<Integer>();
 				currentSolution.add(input[index]);
-				findKDigitsSum(input, index + 1, k - 1, sum - input[index], result, currentSolution);
+				findKDigitsWhoSum(input, index + 1, k - 1, sum - input[index], result, currentSolution);
 			}
 		}
 		return result;
 	}
 
-	private static void findKDigitsSum(int[] input, int index, int k, int sum, List<List<Integer>> result,
+	private static void findKDigitsWhoSum(int[] input, int index, int k, int sum, List<List<Integer>> result,
 			ArrayList<Integer> solution) {
 		for (int i = index; i < input.length; i++) {
 			int remainingSum = sum - input[i];
@@ -34,7 +34,7 @@ public class SumWithKDigits {
 				result.add(newSolution);
 				continue;
 			}
-			findKDigitsSum(input, i + 1, remainingK, remainingSum, result, newSolution);
+			findKDigitsWhoSum(input, i + 1, remainingK, remainingSum, result, newSolution);
 		}
 
 	}
