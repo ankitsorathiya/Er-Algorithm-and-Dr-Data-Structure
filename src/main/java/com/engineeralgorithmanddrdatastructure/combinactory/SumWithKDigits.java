@@ -21,6 +21,14 @@ public class SumWithKDigits {
 
 	private static void findKDigitsWhoSum(int[] input, int index, int k, int sum, List<List<Integer>> result,
 			ArrayList<Integer> solution) {
+		if (index > input.length) {
+			return;
+		}
+		if (k == 0 && sum == 0) {
+			result.add(solution);
+			return;
+		}
+
 		for (int i = index; i < input.length; i++) {
 			int remainingSum = sum - input[i];
 			int remainingK = k - 1;
@@ -30,10 +38,6 @@ public class SumWithKDigits {
 			@SuppressWarnings("unchecked")
 			ArrayList<Integer> newSolution = (ArrayList<Integer>) solution.clone();
 			newSolution.add(input[i]);
-			if (remainingSum == 0 && remainingK == 0) {
-				result.add(newSolution);
-				continue;
-			}
 			findKDigitsWhoSum(input, i + 1, remainingK, remainingSum, result, newSolution);
 		}
 
