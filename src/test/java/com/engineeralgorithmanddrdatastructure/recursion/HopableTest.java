@@ -6,8 +6,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.engineeralgorithmanddrdatastructure.recursion.Hopable;
-
 public class HopableTest {
 	private Hopable hopable;
 
@@ -26,10 +24,26 @@ public class HopableTest {
 	}
 
 	@Test
+	public void testValidJumpsLinearSolution() {
+		assertTrue(hopable.isHopableLinearSolution(new int[] { 1, 2, 3 }));
+		assertTrue(hopable.isHopableLinearSolution(new int[] { 5, 0, 0, 0, 0, 1, 2 }));
+		assertTrue(hopable.isHopableLinearSolution(new int[] { 1, 7, 0, 0, 0, 1, 0 }));
+		assertTrue(hopable.isHopableLinearSolution(new int[] { 1, 1, 1, 2, 1, 1 }));
+		assertTrue(hopable.isHopableLinearSolution(new int[] { 1, 2, 1 }));
+	}
+
+	@Test
 	public void testInvalidJumps() {
 		assertFalse(hopable.isHopable(new int[] { 1, 0, 0 }));
 		assertFalse(hopable.isHopable(new int[] { 5, 0, 0, 0, 0, 0, 1 }));
 		assertFalse(hopable.isHopable(new int[] { 2, 9, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0 }));
+	}
+
+	@Test
+	public void testInvalidLinearJumps() {
+		assertFalse(hopable.isHopableLinearSolution(new int[] { 1, 0, 0 }));
+		assertFalse(hopable.isHopableLinearSolution(new int[] { 5, 0, 0, 0, 0, 0, 1 }));
+		assertFalse(hopable.isHopableLinearSolution(new int[] { 2, 9, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0 }));
 	}
 
 }

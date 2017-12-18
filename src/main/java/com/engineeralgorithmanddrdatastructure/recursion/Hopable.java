@@ -41,4 +41,40 @@ public class Hopable {
 		}
 		return valid;
 	}
+
+	public boolean isHopableLinearSolution(int[] towers) {
+		if (towers == null || towers.length == 0) {
+			return true;
+		}
+		if (towers[0] == 0) {
+			return false;
+		}
+		int tower = findFirstPositionFromWhereOneCanJumpOut(towers);
+		if (tower == -1) {
+			return false;
+		}
+		int needJumps = canJumpOut(towers, tower);
+		return needJumps == 1;
+	}
+
+	private int canJumpOut(int[] towers, int tower) {
+		int needJumps = 1;
+		for (int index = tower - 1; index >= 0; index--) {
+			if (towers[index] >= needJumps) {
+				needJumps = 1;
+			} else {
+				needJumps++;
+			}
+		}
+		return needJumps;
+	}
+
+	private int findFirstPositionFromWhereOneCanJumpOut(int[] towers) {
+		for (int index = 0; index < towers.length; index++) {
+			if (towers[index] + index >= towers.length) {
+				return index;
+			}
+		}
+		return -1;
+	}
 }
