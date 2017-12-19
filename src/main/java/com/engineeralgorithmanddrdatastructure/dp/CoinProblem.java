@@ -34,7 +34,7 @@ public class CoinProblem {
 				break;
 			}
 			if (remainingMoney < 0) {
-				continue;
+				break;
 			}
 			findWaysToChange(remainingMoney, denominationIndex + 1, currentUsage, denominations, result);
 		}
