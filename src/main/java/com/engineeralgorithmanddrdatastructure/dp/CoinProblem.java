@@ -1,12 +1,11 @@
 package com.engineeralgorithmanddrdatastructure.dp;
 
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CoinProblem {
-	public static int findTotalWaysToGiveChangeOf(int money, List<Integer> denominations) {
+	public static int findTotalWaysToGiveChangeOf_Inefficient(int money, List<Integer> denominations) {
 		if (money <= 0) {
 			return 0;
 		}
@@ -15,15 +14,14 @@ public class CoinProblem {
 	}
 
 	private static int findWaysToChange(int money, List<Integer> denominations) {
-		Map<Integer, Map<String, Boolean>> memo = new HashMap<>();
 		int[] result = new int[1];
-		findWaysToChange(money, 0, 0, denominations, memo, result);
+		findWaysToChange(money, 0, 0, denominations, result);
 		return result[0];
 
 	}
 
 	private static void findWaysToChange(int money, int denominationIndex, int noOfUsage, List<Integer> denominations,
-			Map<Integer, Map<String, Boolean>> memo, int[] result) {
+			int[] result) {
 		if (denominationIndex >= denominations.size()) {
 			return;
 		}
@@ -31,30 +29,25 @@ public class CoinProblem {
 		int canUse = money / denominations.get(denominationIndex);
 		for (int currentUsage = 0; currentUsage <= canUse; currentUsage++) {
 			int remainingMoney = money - (denominations.get(denominationIndex) * currentUsage);
-			String currentKey = denominations.get(denominationIndex) + "-" + currentUsage;
-			if (!memo.containsKey(remainingMoney)) {
-				memo.put(remainingMoney, new HashMap<>());
-			}
-			if ((memo.get(remainingMoney).containsKey(currentKey))) {
-				if (memo.get(remainingMoney).get(currentKey)) {
-					result[0]++;
-					break;
-				}
-				continue;
-			}
 			if (remainingMoney == 0) {
-				memo.get(money).put(currentKey, true);
 				result[0]++;
 				break;
-			} else {
-				memo.get(money).put(currentKey, false);
 			}
 			if (remainingMoney < 0) {
-				break;
+				continue;
 			}
-			findWaysToChange(remainingMoney, denominationIndex + 1, currentUsage, denominations, memo, result);
+			findWaysToChange(remainingMoney, denominationIndex + 1, currentUsage, denominations, result);
 		}
 	}
 
-}
+	public static long findTotalWaysToGiveChangeOf_efficient(int n, int coins[]) {
+		long[] memo = new long[n + 1];
+		Arrays.fill(memo, 0);
+		memo[0] = 1;
+		for (int i = 0; i < coins.length; i++)
+			for (int j = coins[i]; j <= n; j++)
+				memo[j] += memo[j - coins[i]];
 
+		return memo[n];
+	}
+}
