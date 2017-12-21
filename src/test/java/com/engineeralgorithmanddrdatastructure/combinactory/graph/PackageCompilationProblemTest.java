@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.recursion;
+package com.engineeralgorithmanddrdatastructure.combinactory.graph;
 
 import static org.junit.Assert.assertEquals;
 
