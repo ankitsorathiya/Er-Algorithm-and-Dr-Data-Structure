@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.combinactory.graph;
+package com.engineeralgorithmanddrdatastructure.graph;
 
 import java.util.Collection;
 import java.util.HashMap;

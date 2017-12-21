@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.combinactory.graph;
+package com.engineeralgorithmanddrdatastructure.graph;
 
 import java.util.HashSet;
 import java.util.Set;

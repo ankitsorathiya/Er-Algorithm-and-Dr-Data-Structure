@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.combinactory.graph;
+package com.engineeralgorithmanddrdatastructure.graph;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.engineeralgorithmanddrdatastructure.combinactory.graph.Graph;
-import com.engineeralgorithmanddrdatastructure.combinactory.graph.Node;
-import com.engineeralgorithmanddrdatastructure.combinactory.graph.PackageCompilationProblem;
+import com.engineeralgorithmanddrdatastructure.graph.Graph;
+import com.engineeralgorithmanddrdatastructure.graph.Node;
+import com.engineeralgorithmanddrdatastructure.graph.PackageCompilationProblem;
 
 public class PackageCompilationProblemTest {
 	@Test
