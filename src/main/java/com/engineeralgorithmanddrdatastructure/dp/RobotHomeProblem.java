@@ -1,7 +1,7 @@
 package com.engineeralgorithmanddrdatastructure.dp;
 
 public class RobotHomeProblem {
-	public int howManyWaysRobotCanReachHome(int[][] maze, int homeRow, int homeColumn) {
+	public static int howManyWaysRobotCanReachHome(int[][] maze) {
 		int[][] memo = initializeMemo(maze);
 		for (int row = memo.length - 2; row >= 0; row--) {
 			for (int col = memo.length - 2; col >= 0; col--) {
@@ -15,7 +15,7 @@ public class RobotHomeProblem {
 		return memo[0][0];
 	}
 
-	private int[][] initializeMemo(int[][] maze) {
+	private static int[][] initializeMemo(int[][] maze) {
 		int[][] memo = new int[maze.length][maze.length];
 		memo[maze.length - 1][maze.length - 1] = 1;
 		for (int index = maze.length - 2; index >= 0; index--) {
