@@ -24,10 +24,10 @@ import java.util.Set;
  *        eg.2 
 			A 
  *         / \      
- *        \/  \/    
+ *        \/  \/      D-->E
  *         B->C
  *         
- *         result [C,B,A] 
+ *         result [[C,B,A] [E,D]] 
  *         
  *         
  */

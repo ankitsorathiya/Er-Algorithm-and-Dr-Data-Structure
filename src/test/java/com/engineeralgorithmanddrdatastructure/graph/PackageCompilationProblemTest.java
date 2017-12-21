@@ -26,12 +26,12 @@ public class PackageCompilationProblemTest {
 		b.linkNode(c);
 		b.linkNode(d);
 		c.linkNode(d);
-		g.addnode(a);
-		g.addnode(b);
-		g.addnode(c);
-		g.addnode(d);
-		g.addnode(e);
-		g.addnode(f);
+		g.addNode(a);
+		g.addNode(b);
+		g.addNode(c);
+		g.addNode(d);
+		g.addNode(e);
+		g.addNode(f);
 		List<List<Node>> result = PackageCompilationProblem.getCompilationOrder(g);
 		List<List<Node>> expected = new ArrayList<>();
 		expected.add(Arrays.asList(d, c, b, a));
