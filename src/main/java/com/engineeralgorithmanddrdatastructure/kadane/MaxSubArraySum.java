@@ -12,6 +12,9 @@ public class MaxSubArraySum {
 		for (int index = 1; index < data.length; index++) {
 			sum = sum + data[index];
 			currentMax = Math.max(Math.max(currentMax, sum), data[index]);
+			if (data[index] > sum) {
+				sum = data[index];
+			}
 			if (currentMax > max) {
 				max = currentMax;
 			}
