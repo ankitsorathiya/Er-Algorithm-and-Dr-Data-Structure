@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class ContiguousSeries {
-	public static boolean isContigueousSerise(int[] data) {
+	public static boolean isContigueousSeries(int[] data) {
 		if (data == null || data.length <= 1) {
 			return true;
 		}
@@ -23,7 +23,7 @@ public class ContiguousSeries {
 		return true;
 	}
 
-	public static boolean isContigueousSerise_efficient(int[] data) {
+	public static boolean isContigueousSeries_efficient(int[] data) {
 		if (data == null || data.length <= 1) {
 			return true;
 		}
