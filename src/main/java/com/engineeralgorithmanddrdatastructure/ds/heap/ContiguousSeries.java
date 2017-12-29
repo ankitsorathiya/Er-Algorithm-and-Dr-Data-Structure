@@ -23,4 +23,30 @@ public class ContiguousSeries {
 		return true;
 	}
 
+	public static boolean isContigueousSerise_efficient(int[] data) {
+		if (data == null || data.length <= 1) {
+			return true;
+		}
+		int max = data[0];
+		int min = data[0];
+		for (int index = 1; index < data.length; index++) {
+			if (data[index] > max) {
+				max = data[index];
+			}
+			if (data[index] < min) {
+				min = data[index];
+			}
+		}
+		boolean[] memo = new boolean[max - min + 1];
+		for (int noIndex = 0; noIndex < data.length; noIndex++) {
+			memo[data[noIndex] - min] = true;
+		}
+		for (int memoIndex = 0; memoIndex < memo.length; memoIndex++) {
+			if (!memo[memoIndex]) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 }

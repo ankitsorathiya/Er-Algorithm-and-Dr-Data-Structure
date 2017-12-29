@@ -14,4 +14,13 @@ public class ContiguousSeriesTest {
 		assertTrue(ContiguousSeries.isContigueousSerise(new int[] { 3, 5, 2, 2, 4, 7, 6 }));
 		assertFalse(ContiguousSeries.isContigueousSerise(new int[] { 20, 20, 2, 2, 4, 7, 6 }));
 	}
+
+	@Test
+	public void testContiguousSeries_efficient() {
+		assertTrue(ContiguousSeries.isContigueousSerise_efficient(null));
+		assertTrue(ContiguousSeries.isContigueousSerise_efficient(new int[] { 3 }));
+		assertFalse(ContiguousSeries.isContigueousSerise_efficient(new int[] { 2, 20 }));
+		assertTrue(ContiguousSeries.isContigueousSerise_efficient(new int[] { 3, 5, 2, 2, 4, 7, 6 }));
+		assertFalse(ContiguousSeries.isContigueousSerise_efficient(new int[] { 20, 20, 2, 2, 4, 7, 6 }));
+	}
 }
