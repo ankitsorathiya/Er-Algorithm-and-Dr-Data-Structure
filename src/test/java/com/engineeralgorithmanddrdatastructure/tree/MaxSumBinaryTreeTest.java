@@ -31,7 +31,12 @@ public class MaxSumBinaryTreeTest {
 	}
 
 	@Test
+	public void testMaxSumInBinaryTreePathFrom() {
+		assertEquals(150, MaxSumBinaryTree.findMaxSumInBinaryTreePathFrom(aRoot));
+	}
+
+	@Test
 	public void testMaxSumBinaryTree() {
-		assertEquals(150, MaxSumBinaryTree.findMaxSumInBinaryTree(aRoot));
+		assertEquals(205, MaxSumBinaryTree.findMaxSumOfBinaryTree(aRoot));
 	}
 }

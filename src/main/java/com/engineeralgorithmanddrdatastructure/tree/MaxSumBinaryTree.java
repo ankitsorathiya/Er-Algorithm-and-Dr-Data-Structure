@@ -1,7 +1,7 @@
 package com.engineeralgorithmanddrdatastructure.tree;
 
 public class MaxSumBinaryTree {
-	public static int findMaxSumInBinaryTree(TreeNode root) {
+	public static int findMaxSumInBinaryTreePathFrom(TreeNode root) {
 		if (root == null) {
 			return 0;
 		}
@@ -22,5 +22,32 @@ public class MaxSumBinaryTree {
 		}
 		findMaxSum(root.getLeft(), newSum, maxSum);
 		findMaxSum(root.getRight(), newSum, maxSum);
+	}
+
+	public static int findMaxSumOfBinaryTree(TreeNode root) {
+		if (root == null) {
+			return 0;
+		}
+		int[] maxSum = new int[1];
+		int[] currentSum = new int[1];
+		maxSum[0] = root.getIntValue();
+		currentSum[0] = root.getIntValue();
+		findMaxSumOfBinaryTree(root.getLeft(), currentSum, maxSum);
+		findMaxSumOfBinaryTree(root.getRight(), currentSum, maxSum);
+		return maxSum[0];
+
+	}
+
+	private static void findMaxSumOfBinaryTree(TreeNode root, int[] currentSum, int[] maxSum) {
+		if (root == null) {
+			return;
+		}
+		currentSum[0] = Math.max(currentSum[0], Math.max(root.getIntValue() + currentSum[0], root.getIntValue()));
+		if (currentSum[0] > maxSum[0]) {
+			maxSum[0] = currentSum[0];
+		}
+		findMaxSumOfBinaryTree(root.getLeft(), currentSum, maxSum);
+		findMaxSumOfBinaryTree(root.getRight(), currentSum, maxSum);
+
 	}
 }
