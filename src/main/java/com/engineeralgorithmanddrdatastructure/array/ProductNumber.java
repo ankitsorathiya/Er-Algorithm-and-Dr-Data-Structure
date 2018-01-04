@@ -46,4 +46,22 @@ public class ProductNumber {
 		}
 		return result;
 	}
+
+	public static int[] findProductGreedy(int[] data) {
+		if (data == null || data.length < 2) {
+			return null;
+		}
+		int[] result = new int[data.length];
+		int product = 1;
+		for (int index = 0; index < data.length; index++) {
+			result[index] = product;
+			product *= data[index];
+		}
+		product = 1;
+		for (int index = data.length - 1; index >= 0; index--) {
+			result[index] *= product;
+			product *= data[index];
+		}
+		return result;
+	}
 }
