@@ -1,4 +1,4 @@
-package com.engineeralgorithmanddrdatastructure.ds.heap;
+package com.engineeralgorithmanddrdatastructure.recursion;
 
 /**
  * 
@@ -34,7 +34,6 @@ public class XGemsProblem {
 	private static int findCount(int[] gemsA, int[] gemsB, int X) {
 		int total = 0;
 		for (int aGem = gemsA.length - 1; aGem >= 0; aGem--) {
-			boolean shouldBreak = false;
 			for (int bGem = gemsB.length - 1; bGem >= 0; bGem--) {
 				if (aGem + bGem >= X) {
 					if (gemsA[aGem] > 0 && gemsB[bGem] > 0) {
@@ -43,12 +42,8 @@ public class XGemsProblem {
 						total += gemsA[aGem] + gemsB[bGem];
 					}
 				} else {
-					shouldBreak = true;
 					break;
 				}
-			}
-			if (shouldBreak && aGem < X) {
-				break;
 			}
 		}
 		return total;
