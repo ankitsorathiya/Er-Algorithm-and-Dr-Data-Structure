@@ -4,6 +4,36 @@ import java.util.Stack;
 
 public class WaterLevelHistogram {
 	public static int findWaterArea(int[] histogram) {
+		int waterVolume = 0;
+		if (histogram == null || histogram.length <= 0) {
+			return waterVolume;
+		}
+
+		int[] leftMax = new int[histogram.length];
+		int lMax = leftMax[0];
+		for (int lMaxIndex = 1; lMaxIndex < histogram.length; lMaxIndex++) {
+			if (histogram[lMaxIndex] > lMax) {
+				lMax = histogram[lMaxIndex];
+			}
+			leftMax[lMaxIndex] = lMax;
+		}
+
+		int rMax = histogram[histogram.length - 1];
+		for (int rMaxIndex = histogram.length - 1; rMaxIndex >= 0; rMaxIndex--) {
+			if (histogram[rMaxIndex] > rMax) {
+				rMax = histogram[rMaxIndex];
+			}
+			int minWaterLevel = Math.min(rMax, leftMax[rMaxIndex]);
+			if (minWaterLevel >= histogram[rMaxIndex]) {
+				waterVolume += minWaterLevel - histogram[rMaxIndex];
+			}
+		}
+
+		return waterVolume;
+
+	}
+
+	public static int findWaterAreaUsingStack(int[] histogram) {
 		int waterLevel = 0;
 		if (histogram == null || histogram.length <= 1) {
 			return waterLevel;

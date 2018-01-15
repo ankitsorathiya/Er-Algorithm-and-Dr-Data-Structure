@@ -6,6 +6,17 @@ import org.junit.Test;
 
 public class WaterLevelHistogramTest {
 	@Test
+	public void testWaterLevelUsingStack() {
+		assertEquals(0, WaterLevelHistogram.findWaterAreaUsingStack(null));
+		assertEquals(0, WaterLevelHistogram.findWaterAreaUsingStack(new int[] {}));
+		assertEquals(0, WaterLevelHistogram.findWaterAreaUsingStack(new int[] { 1 }));
+		assertEquals(26, WaterLevelHistogram
+				.findWaterAreaUsingStack(new int[] { 0, 0, 4, 0, 0, 6, 0, 0, 3, 0, 5, 0, 1, 0, 0, 0 }));
+		assertEquals(46, WaterLevelHistogram
+				.findWaterAreaUsingStack(new int[] { 0, 0, 4, 0, 0, 6, 0, 0, 3, 0, 8, 0, 2, 0, 5, 2, 0, 3, 0, 0 }));
+	}
+
+	@Test
 	public void testWaterLevel() {
 		assertEquals(0, WaterLevelHistogram.findWaterArea(null));
 		assertEquals(0, WaterLevelHistogram.findWaterArea(new int[] {}));
