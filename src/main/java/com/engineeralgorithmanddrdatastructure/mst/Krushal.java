@@ -1,25 +1,10 @@
 package com.engineeralgorithmanddrdatastructure.mst;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Krushal {
-	public static void main(String[] args) {
-		List<Edge> graph = new ArrayList<>();
-		graph.add(new Edge(1, 2, 1));
-		graph.add(new Edge(2, 1, 1));
-		graph.add(new Edge(1, 3, 4));
-		graph.add(new Edge(3, 1, 4));
-		graph.add(new Edge(1, 4, 3));
-		graph.add(new Edge(4, 1, 3));
-		graph.add(new Edge(3, 4, 5));
-		graph.add(new Edge(4, 3, 5));
-		graph.add(new Edge(4, 2, 2));
-		graph.add(new Edge(2, 4, 2));
-	}
-
 	public static int findMinimumSpanningTree(List<Edge> graph) {
 		graph.sort((a, b) -> a.getWeight() - b.getWeight());
 		Set<Integer> seen = new HashSet<>();
@@ -63,5 +48,4 @@ class Edge {
 	public String toString() {
 		return "Edge [from=" + from + ", to=" + to + ", weight=" + weight + "]";
 	}
-
 }
