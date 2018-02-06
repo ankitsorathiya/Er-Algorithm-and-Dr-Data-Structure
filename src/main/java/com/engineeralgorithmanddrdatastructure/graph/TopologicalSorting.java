@@ -9,14 +9,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class TopologicalSorting {
-	public static void main(String[] args) {
-		boolean[][] directedGraph = new boolean[][] { { false, true, true, true }, { false, false, false, true },
-				{ false, false, false, true }, { false, false, false, false } };
-		System.out.println(sortTopologicallyWithBFS(directedGraph));
-		System.out.println(sortTopologicallyWithDFS(directedGraph));
-
-	}
-
 	public static List<Integer> sortTopologicallyWithDFS(boolean[][] directedAdjacancy) {
 		validateInput(directedAdjacancy);
 		LinkedList<Integer> topological = new LinkedList<>();
