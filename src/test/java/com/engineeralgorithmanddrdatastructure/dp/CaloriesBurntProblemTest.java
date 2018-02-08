@@ -23,6 +23,7 @@ public class CaloriesBurntProblemTest {
 	@Parameters
 	public static Collection<Object[]> getData() {
 		Collection<Object[]> input = new ArrayList<>();
+		input.add(new Object[] { 0, null });
 		input.add(new Object[] { 40, new int[][] { { 5, 5, 5 }, { 5, 1, 5 }, { 5, 5, 5 } } });
 		input.add(new Object[] { 80, new int[][] { { 5, 5, 5, 5, 5 }, { 5, 5, 5, 1, 5 }, { 5, 5, 5, 5, 5 },
 				{ 5, 5, 5, 5, 5 }, { 5, 5, 5, 5, 5 } } });

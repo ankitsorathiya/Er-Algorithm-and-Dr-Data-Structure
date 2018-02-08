@@ -1,7 +1,17 @@
 package com.engineeralgorithmanddrdatastructure.dp;
 
 public class CaloriesBurntProblem {
-
+	/**
+	 * You are given a 2 dimensional matrix X of n rows and n columns where X[i][j]
+	 * denotes the calories burnt. Two persons, a boy and a girl, start from two
+	 * corners of this matrix. The boy starts from cell (1,1) and needs to reach
+	 * cell (n,n). On the other side, the girl starts from cell (n,1) and needs to
+	 * reach (1,n). The boy can move right and down. The girl can move right and up.
+	 * As they visit a cell, the amount in the cell X[i][j] is added to their total
+	 * of calories burnt. You have to maximize the sum of total calories burnt by
+	 * both of them under the condition that they shall meet only in one cell and
+	 * the cost of this cell shall not be included in either of their total.
+	 */
 	public static int findMaxCaloriesBurnt(int[][] calories) {
 		if (calories == null) {
 			return 0;
