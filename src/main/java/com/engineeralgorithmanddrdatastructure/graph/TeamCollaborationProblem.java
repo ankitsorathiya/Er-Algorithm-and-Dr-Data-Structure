@@ -1,3 +1,4 @@
+package com.engineeralgorithmanddrdatastructure.graph;
 /*
 
 A company organizes two foreign trips for its employees yearly. Aim of the trip is to increase interaction among the employees of the company and hence company wants each of his employee to see new people on the trip and not even a single person with whom he has worked in past. Therefore it is a rule in company that in any of the trips, all the employees should be new to each other and no two of them should have worked together in past.†
@@ -16,6 +17,7 @@ public class TeamCollaborationProblem {
         Set<Integer> trip1 = new HashSet<>();
         Set<Integer> trip2 = new HashSet<>();
         for (Pair<Integer> pair : workHistory) {
+
             if (trip1.contains(pair.first) && trip1.contains(pair.second)) {
                 return false;
             }
@@ -26,14 +28,18 @@ public class TeamCollaborationProblem {
             if (trip1.contains(pair.first)) {
                 trip2.add(pair.second);
             } else if (trip1.contains(pair.second)) {
+                trip2.add(pair.first);
+            } else if (trip2.contains(pair.first)) {
+                trip1.add(pair.second);
+            } else if (trip2.contains(pair.second)) {
                 trip1.add(pair.first);
             } else {
                 trip1.add(pair.first);
                 trip2.add(pair.second);
             }
         }
+        return (trip1.size() + trip2.size() == numEmployees);
 
-        return true;
     }
 
     private static void checkPass(String testName, boolean resultValue, boolean expectedValue) {
@@ -49,8 +55,10 @@ public class TeamCollaborationProblem {
         workHistoryTest1.add(new Pair<Integer>(1, 2));
         workHistoryTest1.add(new Pair<Integer>(2, 3));
         workHistoryTest1.add(new Pair<Integer>(3, 0));
+        workHistoryTest1.add(new Pair<Integer>(4, 5));
+        workHistoryTest1.add(new Pair<Integer>(5, 6));
 
-        checkPass("Test1", isTeamBuildingPossible(workHistoryTest1, 4), true);
+        checkPass("Test1", isTeamBuildingPossible(workHistoryTest1, 7), true);
 
         //Test 2
         ArrayList<Pair<Integer>> workHistoryTest2 = new ArrayList<>();
