@@ -2,13 +2,13 @@ package com.engineeralgorithmanddrdatastructure.linkedlist;
 
 import org.junit.Assert;
 
-public class CircularLinkedListRemoveNextProblem {
+public class CircularLinkedListProblem {
     public static void main(String[] args) {
         Node<Integer> head = new Node<>(1);
         Node<Integer> second = new Node<>(2);
         head.setNext(second);
         second.setNext(head);
-        CircularLinkedListRemoveNextProblem problem = new CircularLinkedListRemoveNextProblem();
+        CircularLinkedListProblem problem = new CircularLinkedListProblem();
         Node<Integer> newHead = problem.removeNext(head);
         System.out.println(newHead.printPath());
         Assert.assertTrue(newHead.printPath().equals("1"));

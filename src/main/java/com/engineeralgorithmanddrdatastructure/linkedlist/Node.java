@@ -27,11 +27,13 @@ public class Node<T> {
     public String printPath() {
         Node<T> current = this;
         StringBuilder path = new StringBuilder();
-        while (current.next != this) {
+        while (current != null && current.next != this) {
             path.append(current.value).append("=>");
             current = current.next;
         }
-        path.append(current.value);
+        if (current != null) {
+            path.append(current.value);
+        }
         return path.toString();
     }
 }
