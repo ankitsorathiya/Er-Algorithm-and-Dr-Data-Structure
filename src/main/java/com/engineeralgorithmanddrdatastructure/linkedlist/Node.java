@@ -1,9 +1,11 @@
 package com.engineeralgorithmanddrdatastructure.linkedlist;
 
+import java.util.Objects;
+
 public class Node<T> {
     private T value;
     private Node<T> next;
-
+    public int visitingCount = 0;
     public Node(T value) {
         this.value = value;
     }
@@ -35,5 +37,17 @@ public class Node<T> {
             path.append(current.value);
         }
         return path.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getValue(), getNext(), visitingCount);
     }
 }
