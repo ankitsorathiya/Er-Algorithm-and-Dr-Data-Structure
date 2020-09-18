@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Node<T> {
     private T value;
     private Node<T> next;
-    public int visitingCount = 0;
     public Node(T value) {
         this.value = value;
     }
@@ -47,7 +46,6 @@ public class Node<T> {
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(getValue(), getNext(), visitingCount);
+        return Objects.hash(getValue(), getNext());
     }
 }
