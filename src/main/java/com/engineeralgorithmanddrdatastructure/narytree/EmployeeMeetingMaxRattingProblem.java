@@ -11,11 +11,11 @@ import java.util.Map;
  * Input: provided for ease of understanding as a tree structure below
  * (For the below example, all the employees have the same rating value of 1.)
  * <p>
- * A
- * B  C  D E
- * F            G  H
- * I     J              K L M N O
- * P Q   R S
+ *              A
+ *          B  C  D E
+ *          F       G  H
+ *      I     J         K L M N O
+ *   P Q     R S
  * <p>
  * Output:13
  * A sample invite list would look like this [B,C,D,E,  K,L,M,N,O,  P,Q,R,S]
@@ -48,31 +48,29 @@ public class EmployeeMeetingMaxRattingProblem {
     }
 
     public int findMaxRattingSum(Employee root) {
-        Map<String, Integer[]> memo = new HashMap();
-        int sumWithoutMe = findMax(0, root, false, memo);
-        int sumWithMe = findMax(root.ratting, root, true, memo);
-        System.out.println(sumWithMe);
-        System.out.println(sumWithoutMe);
+        Map<String, int[]> memo = new HashMap();
+        int sumWithoutMe = findMax(root, false, memo);
+        int sumWithMe = findMax(root, true, memo);
         return Math.max(sumWithoutMe, sumWithMe);
     }
 
-    private int findMax(int totalSum, Employee root, boolean parentTaken, Map<String, Integer[]> memo) {
+    private int findMax(Employee root, boolean parentTaken, Map<String, int[]> memo) {
         if (memo.containsKey(root.name)) {
             if (parentTaken) {
                 return memo.get(root.name)[0];
             } else {
-                return memo.get(root.name)[1];
+                return Math.max(memo.get(root.name)[0], memo.get(root.name)[1]);
             }
         }
         int maxSumWithoutMe = 0;
         int maxSumWithMe = root.ratting;
 
         for (Employee current : root.subordinates) {
-            maxSumWithoutMe += findMax(totalSum, current, false, memo);
-            maxSumWithMe += findMax(maxSumWithMe + current.ratting, current, true, memo);
+            maxSumWithoutMe += findMax(current, false, memo);
+            maxSumWithMe += findMax(current, true, memo);
         }
-        memo.put(root.name, new Integer[]{maxSumWithoutMe, maxSumWithMe});
-        return parentTaken ? maxSumWithoutMe : maxSumWithMe;
+        memo.put(root.name, new int[]{maxSumWithoutMe, Math.max(maxSumWithMe, maxSumWithoutMe)});
+        return parentTaken ? maxSumWithoutMe : Math.max(maxSumWithMe, maxSumWithoutMe);
     }
 
 }
