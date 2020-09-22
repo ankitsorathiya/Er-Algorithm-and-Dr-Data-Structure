@@ -2,8 +2,6 @@ package com.engineeralgorithmanddrdatastructure.string;
 
 import org.junit.Assert;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 // input: ab[cd[e]3]2fg @ i=7 (0-based)
@@ -49,6 +47,28 @@ public class ExpressionResolution {
         return result.toString();
     }
 
+    private static String multiply(String popped, int value) {
+        if (value <= 0) {
+            return "";
+        }
+        StringBuilder stringBuilder = new StringBuilder(popped.length() * value);
+        stringBuilder.append(popped);
+        int maxLength = popped.length() * value;
+        int currentLength = popped.length();
+        while (currentLength < maxLength) {
+            if (stringBuilder.length() + stringBuilder.length() > maxLength) {
+                break;
+            }
+            stringBuilder.append(stringBuilder.toString());
+            currentLength = stringBuilder.length();
+        }
+        int remaining = maxLength - stringBuilder.length();
+        if (remaining > 0) {
+            stringBuilder.append(stringBuilder.substring(0, remaining));
+        }
+        return stringBuilder.toString();
+    }
+
     public String resolveOptimal(String input) {
         Stack<String> stack = new Stack<>();
         StringBuilder subString = new StringBuilder();
@@ -66,21 +86,17 @@ public class ExpressionResolution {
                     subString = new StringBuilder();
                 }
                 String popped = stack.pop();
-                StringBuilder res = multiply(input, index, popped);
-                List<String> subResult = new ArrayList<>();
-                subResult.add(res.toString());
+                char number = input.charAt(index + 1);
+                int value = number - 48;
+                String res = multiply(popped, value);
                 popped = stack.isEmpty() ? null : stack.pop();
                 if (popped.equalsIgnoreCase("[")) {
                     popped = stack.isEmpty() ? null : stack.pop();
                 }
                 if (popped != null) {
-                    subResult.add(popped);
+                    res = popped + res;
                 }
-                res = new StringBuilder();
-                for (int listIndex = subResult.size() - 1; listIndex >= 0; listIndex--) {
-                    res.append(subResult.get(listIndex));
-                }
-                stack.push(res.toString());
+                stack.push(res);
                 index = index + 1;
             } else {
                 subString.append(input.charAt(index));
@@ -97,16 +113,6 @@ public class ExpressionResolution {
 
         return result;
 
-    }
-
-    private StringBuilder multiply(String input, int index, String popped) {
-        char number = input.charAt(index + 1);
-        int value = Integer.parseInt(number + "");
-        StringBuilder res = new StringBuilder();
-        for (int time = 0; time < value; time++) {
-            res.append(popped);
-        }
-        return res;
     }
 
 }
